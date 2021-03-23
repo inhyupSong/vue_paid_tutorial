@@ -11,10 +11,15 @@
       <!-- Data 안에있는 uuid와 아래의  v-bind:id를 연결한다 -->
       <p v-bind:id="uuid" v-bind:class="name">{{num}}</p>
       <p>{{doubleNum}}</p>
+      <div></div>
+      
+      <!-- loading= false 일때 show는 돔에 남아있고 보이지만 않는것인 반면, if는 없어진다. -->
       <div v-show="loading">Loading...</div>
-
       <div v-if="loading">Loading...</div>
       <div v-else>test user has been logged in</div>
+      <input type= "text" v-model="message">
+      <p>{{ message }}</p>
+    </input>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -26,7 +31,9 @@
           uuid: 'abc1234',
           name: 'text-blue',
           loading: true,
+          message: '',
         },
+        // 어떤 다른값에 따라 변하는 값을 computed에 쓰인다. 
         computed: {
           doubleNum: function () {
             return this.num * 2
